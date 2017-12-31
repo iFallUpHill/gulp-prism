@@ -8,7 +8,7 @@ const fs            = require('fs');
 
 // Use when developing locally:
 // const langPath = "node_modules/prismjs/"; 
-const langPath = "../../node_modules/prismjs/";
+const langPath = "../prismjs/";
 const normalizedPath = path.join(__dirname, langPath);
 const loadFirst = ['django'];
 
