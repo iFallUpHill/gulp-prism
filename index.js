@@ -7,7 +7,7 @@ const path          = require('path');
 const fs            = require('fs');
 
 const langPath = "node_modules/prismjs/";
-const normalizedPath = path.join(__dirname, langPath);
+const normalizedPath = langPath; // When developing: path.join(__dirname, langPath);
 const brokenLanguages = ['django'];
 
 function loadAllLanguages() {
