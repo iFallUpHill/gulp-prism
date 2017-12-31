@@ -10,14 +10,14 @@ const fs            = require('fs');
 // const langPath = "node_modules/prismjs/"; 
 const langPath = "../../node_modules/prismjs/";
 const normalizedPath = path.join(__dirname, langPath);
-const brokenLanguages = ['django'];
+const loadFirst = ['django'];
 
 function loadAllLanguages() {
     let languagesToLoad = [];
     fs.readdirSync(normalizedPath + "components/").forEach( file => {
         if (/^.+\.min\.(js)$/i.test(file)) {
             let languageName = file.replace('prism-', '').replace('.min.js', '');
-            if (languageName !== 'core' && brokenLanguages.indexOf(languageName) === -1) {
+            if (languageName !== 'core' && loadFirst.indexOf(languageName) === -1) {
                 languagesToLoad.push(languageName);
             }
         }
@@ -26,7 +26,7 @@ function loadAllLanguages() {
 }
 
 const PrismLoader = require(normalizedPath + "tests/helper/prism-loader");
-const Prism = PrismLoader.createInstance(brokenLanguages.concat(loadAllLanguages()));
+const Prism = PrismLoader.createInstance(loadFirst.concat(loadAllLanguages()));
 
 const packageName   = require('./package.json').name;
 const defaultConfig = {
