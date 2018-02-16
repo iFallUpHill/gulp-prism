@@ -40,7 +40,7 @@ gulp.task('default', function () {
 ```
 
 #### Output
-```
+```html
 <pre><code class="language-html prism"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
     This will be highlighted!
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
@@ -56,7 +56,7 @@ gulp.task('default', function () {
 
 ## Known Issues
 
-* No CSS is included. This is intentional as this library is only intended to pre-wrap code snippets within code blocks using Prism's semantic tags. You are required to define and include your own CSS.
+* No CSS is included. This is intentional as this library is only intended to pre-wrap code snippets within code blocks using Prism's semantic tags. You are required to define and include your own CSS. An example SCSS file can be found [here](https://github.com/iFallUpHill/boba/blob/master/src/scss/docs/_prism.scss "example").
 
 * Plugins are currently not supported. Feel free to submit a pull request to help get the ball moving!
 
