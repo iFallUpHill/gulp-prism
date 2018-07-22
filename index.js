@@ -10,14 +10,13 @@ const fs            = require('fs');
 // const langPath = "node_modules/prismjs/"; 
 const langPath = "../prismjs/";
 const normalizedPath = path.join(__dirname, langPath);
-const loadFirst = ['django'];
 
-function loadAllLanguages() {
+function getAllLanguages() {
     let languagesToLoad = [];
     fs.readdirSync(normalizedPath + "components/").forEach( file => {
         if (/^.+\.min\.(js)$/i.test(file)) {
             let languageName = file.replace('prism-', '').replace('.min.js', '');
-            if (languageName !== 'core' && loadFirst.indexOf(languageName) === -1) {
+            if (languageName !== 'core'){
                 languagesToLoad.push(languageName);
             }
         }
@@ -25,8 +24,9 @@ function loadAllLanguages() {
     return languagesToLoad;
 }
 
-const PrismLoader = require(normalizedPath + "tests/helper/prism-loader");
-const Prism = PrismLoader.createInstance(loadFirst.concat(loadAllLanguages()));
+const Prism = require(`${normalizedPath}/components/prism-core.js`);
+const loadLanguages = require(`${normalizedPath}/components/index.js`);
+loadLanguages(getAllLanguages());
 
 const packageName   = require('./package.json').name;
 const defaultConfig = {
@@ -47,11 +47,11 @@ const entityMap = {
     '=': '&#x3D;'
 }
 
-function escapeHTML (HTMLString) {
+function escapeHTML(HTMLString) {
     return String(HTMLString).replace(/[&<>"'`=\/]/g, s => entityMap[s]);
 }
 
-function highlight (text, config) {
+function highlight(text, config) {
     const $ = cheerio.load(text, config.cheerio);
 
     $(config.selector)
