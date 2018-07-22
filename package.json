@@ -1,6 +1,6 @@
 {
   "name": "gulp-prism",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "Pipe code snippets through Prism using gulp to pre-tag code blocks at compile time.",
   "main": "index.js",
   "scripts": {
